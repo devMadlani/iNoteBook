@@ -45,8 +45,6 @@ const getNote = async() => {
     //   __v: 0,
     // };
     const json = await response.json()
-    
-    setNotes(notes.concat(json))
   }
   //Delete a note
   const deleteNote = async (id) => {

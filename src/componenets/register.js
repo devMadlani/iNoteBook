@@ -18,15 +18,18 @@ function Register(props) {
 
 
     const json = await response.json()
-    console.log(json);
+    
     if (json.success) {
       //Save the token
       localStorage.setItem("token", json.authToken);
       history("/")
       props.showAlert("Account Created Sccessfully", "success")
     }
-    else {
-      props.showAlert("Invalid details", "danger")
+    else if(json.errors?.length >  0) {
+      props.showAlert(json.errors[0].msg, "danger")
+    }
+    else{
+      props.showAlert(json.error,"danger")
     }
   }
 
