@@ -7,7 +7,6 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState(notesInitial);
 //Get all notes
 const getNote = async() => {
-  // TODO: API call
   const url = `${host}/api/notes/fetchallnotes`
   
   const response = await fetch(url, {
@@ -36,15 +35,17 @@ const getNote = async() => {
     });
     // Logic to edit in client
     // const note = {
-    //   _id: "666c46f252b9ccdbdedc73e9",
-    //   user: "666be7f343debc8860dc5570",
-    //   title: title,
-    //   description: description,
-    //   tag: tag,
-    //   date: "2024-06-14T13:34:42.624Z",
-    //   __v: 0,
-    // };
-    const json = await response.json()
+      //   _id: "666c46f252b9ccdbdedc73e9",
+      //   user: "666be7f343debc8860dc5570",
+      //   title: title,
+      //   description: description,
+      //   tag: tag,
+      //   date: "2024-06-14T13:34:42.624Z",
+      //   __v: 0,
+      // };
+      const json = await response.json()
+      console.log(json)
+      setNotes([...notes,json])
   }
   //Delete a note
   const deleteNote = async (id) => {
